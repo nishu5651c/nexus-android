@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/profile" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        <ImageView android:src="@drawable/ic_app_logo" android:contentDescription="@string/profile" android:layout_marginTop="12dp"/>
+    </LinearLayout>
+</ScrollView>

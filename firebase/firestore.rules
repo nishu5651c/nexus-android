@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // users: users/{uid}
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && request.auth.uid == userId;
+      allow delete: if false; // Deletion should be a privileged backend operation
+    }
+
+    // Conversations root (read/write rules will be tightened in later batches)
+    match /conversations/{conversationId} {
+      allow read, write: if request.auth != null && false; // placeholder - will be updated
+    }
+
+    // Workspaces
+    match /workspaces/{workspaceId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && false; // update later with role checks
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
